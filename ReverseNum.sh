@@ -1,15 +1,29 @@
-#!/bin/bash 
+#!/bin/bash -x
 
-echo enter n
-read n
-num=0
-while [ $n -gt 0 ]
+echo enter number to reverse 
+
+read number
+num=$number;
+reverse=0
+
+while [ $number -gt 0 ]
 do
-num=$( $num \* 10)
-k=$( $n % 10)
-num=$( $num + $k)
-n=$( $n / 10)
+
+rem='expr $number % 10'
+reverse='expr $reverse \* 10 + $rem'
+number='expr $number / 10'
+
 done
-echo number is $num
+
+echo Reverse=$reverse;
+
+
+if [ $num -eq $reverse ]
+then
+echo "palindrom"
+else
+echo "not palindrome"
+fi
+
 
 
